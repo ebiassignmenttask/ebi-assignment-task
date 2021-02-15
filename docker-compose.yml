@@ -1,0 +1,7 @@
+version: '3'
+services:
+  assignment-task:
+    container_name: ebi-assignment
+    image: ebiassignmenttask/ebi-assignment-task:latest
+    ports:
+      - "2020:2020"
