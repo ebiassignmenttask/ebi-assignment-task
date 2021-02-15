@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jenkins-docker
+  name: ebi-assignment
 spec:
   selector:
     matchLabels:
-      app: jenkins-docker
+      app: ebi-assignment
   replicas: 2 
   template:
     metadata:
       labels:
-        app: jenkins-docker
+        app: ebi-assignment
     spec:
       containers:
-      - name: simple-service
-        image: devopstrika/docker-jenkins-image:latest
+      - name: ebi-assignment
+        image: ebiassignmenttask/ebi-assignment-task:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 2020
 
 ---
 # Node Port Service 
 apiVersion: v1
 kind: Service
 metadata:
-  name: jenkins-docker
+  name: ebi-assignment
 spec:
   type: NodePort
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 2020
+      targetPort: 2020
   selector:
-    app: jenkins-docker
+    app: ebi-assignment
